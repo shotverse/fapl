@@ -204,8 +204,40 @@
 .results-lead .factor-group>.case:first-of-type{margin-top:16px!important;padding-top:0!important}
 
 }
-</style><style id="character-row-alignment">#case-editing-character-02 .comparison-output .pre-media{min-height:78px}</style></head><body>
-<header class="hero"><div class="wrap"><h1>Making MLLM Latents Matter</h1><p class="abstract">Cinematic video generation requires inferring unseen temporal details and coordinating character, scene, action, and camera. Factor-Aware Predictive Learning (FAPL) combines paired observation and factor-editing supervision with three training stages to strengthen the use of MLLM representations and support selective control.</p><div class="hero-motivation"><b>Why FAPL</b><span>Native text and VAE routes can let a video decoder bypass MLLM latents. FAPL links text-only and video-conditioned observations to one target, then links paired factor edits to a requested change while other factors remain targets.</span></div><div class="hero-stages" aria-label="FAPL three-stage method"><article class="stage"><span>I</span><h3>MLLM latent enhancement</h3><p>Freeze the MLLM and connector; train the DiT with MLLM latents as its content condition.</p></article><article class="stage"><span>II</span><h3>Factor-aware control</h3><p>Swap the designated factor span across paired examples while other factors remain targets.</p></article><article class="stage"><span>III</span><h3>Prediction from limited inputs</h3><p>Freeze the DiT; train the MLLM and connector against a shared text-only/video target.</p></article></div></div></header>
+</style><style id="character-row-alignment">#case-editing-character-02 .comparison-output .pre-media{min-height:78px}</style>
+<style id="paper-author-styles">
+.paper-authorship{max-width:1080px;margin:13px 0 18px}
+.paper-authors{display:flex;flex-wrap:wrap;gap:5px 17px;list-style:none;margin:0 0 10px;padding:0;font-size:.96rem;line-height:1.5;font-weight:550}
+.paper-author{white-space:nowrap}
+.paper-authorship sup{margin-left:2px;color:var(--teal);font-size:.7em;line-height:0;vertical-align:super}
+.paper-affiliations,.paper-author-notes{display:flex;flex-wrap:wrap;gap:5px 18px;margin:0;color:var(--muted);font-size:.81rem;line-height:1.5}
+.paper-affiliations sup,.paper-author-notes sup{margin:0 4px 0 0}
+.paper-author-notes{margin-top:8px;font-size:.78rem}
+@media(max-width:560px){.paper-authorship{margin:12px 0 16px}.paper-authors{gap:5px 14px;font-size:.9rem}.paper-affiliations{gap:5px;font-size:.78rem}.paper-affiliations>span{flex-basis:100%}}
+</style></head><body>
+<header class="hero"><div class="wrap"><h1>Making MLLM Latents Matter</h1>
+<div class="paper-authorship" role="group" aria-label="Authors and affiliations">
+  <ul class="paper-authors" aria-label="Authors in paper order">
+    <li class="paper-author"><span>Songlin Yang</span><sup>1,*,†</sup></li>
+    <li class="paper-author"><span>Zhe Wang</span><sup>1,*</sup></li>
+    <li class="paper-author"><span>Xiaotong Zhao</span><sup>2</sup></li>
+    <li class="paper-author"><span>Xi Wang</span><sup>3</sup></li>
+    <li class="paper-author"><span>Ran Zhang</span><sup>2</sup></li>
+    <li class="paper-author"><span>Shuai Li</span><sup>2</sup></li>
+    <li class="paper-author"><span>Taiyi Wu</span><sup>2</sup></li>
+    <li class="paper-author"><span>Songlian Li</span><sup>2</sup></li>
+    <li class="paper-author"><span>Eric Liu</span><sup>2</sup></li>
+    <li class="paper-author"><span>Alan Zhao</span><sup>2</sup></li>
+    <li class="paper-author"><span>Anyi Rao</span><sup>1</sup></li>
+  </ul>
+  <p class="paper-affiliations">
+    <span><sup>1</sup>MMLab@HKUST, The Hong Kong University of Science and Technology</span>
+    <span><sup>2</sup>Tencent Video</span>
+    <span><sup>3</sup>LIX, École Polytechnique</span>
+  </p>
+  <p class="paper-author-notes"><span><sup>*</sup>Equal contribution.</span><span><sup>†</sup>Project lead.</span></p>
+</div>
+<p class="abstract">Cinematic video generation requires inferring unseen temporal details and coordinating character, scene, action, and camera. Factor-Aware Predictive Learning (FAPL) combines paired observation and factor-editing supervision with three training stages to strengthen the use of MLLM representations and support selective control.</p><div class="hero-motivation"><b>Why FAPL</b><span>Native text and VAE routes can let a video decoder bypass MLLM latents. FAPL links text-only and video-conditioned observations to one target, then links paired factor edits to a requested change while other factors remain targets.</span></div><div class="hero-stages" aria-label="FAPL three-stage method"><article class="stage"><span>I</span><h3>MLLM latent enhancement</h3><p>Freeze the MLLM and connector; train the DiT with MLLM latents as its content condition.</p></article><article class="stage"><span>II</span><h3>Factor-aware control</h3><p>Swap the designated factor span across paired examples while other factors remain targets.</p></article><article class="stage"><span>III</span><h3>Prediction from limited inputs</h3><p>Freeze the DiT; train the MLLM and connector against a shared text-only/video target.</p></article></div></div></header>
 <nav class="local-nav"><div class="wrap"><a href="#sparse-to-video">Sparse-to-Video</a><a href="#factor-aware-control">Factor-Aware Editing</a><a href="#multi-shot">Multi-Shot</a><a href="#mllm-conditioning">MLLM Conditioning</a><a href="#failure-cases">Failure Cases</a></div></nav>
 <main><section id="results" class="results-lead"><div class="wrap" id="case-collections"><section class="case-section" id="sparse-to-video" data-category="sparse-to-video"><div class="section-title"><h2>Sparse-to-Video</h2><p>Setting: Prompt-only video generation, with no target video provided. The model must infer character, scene, action, and camera motion from text.</p></div><div class="experiment-group factor-group"><h3>Character</h3><article class="case many-videos" id="case-sparse-character-01" data-case="sparse-character-01">
       <div class="case-controls-only"><div class="media-controls" data-controls="case-sparse-character-01"><button type="button" data-action="play">Play all</button><button type="button" data-action="pause">Pause</button></div></div>
